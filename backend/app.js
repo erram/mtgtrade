@@ -3,7 +3,9 @@ var path = require('path')
 var logger = require('morgan')
 var bodyParser = require('body-parser')
 
+// Get routes
 var userroutes = require('./routes/user')
+
 var app = express()
 
 var mongoose = require('mongoose')
@@ -20,7 +22,8 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: 'false' }))
 app.use(express.static(path.join(__dirname, '../dist')))
-app.use('/users', express.static(path.join(__dirname, '../dist')))
+
+// Routing options
 app.use('/user', userroutes)
 
 // catch 404 and forward to error handler
